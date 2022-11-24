@@ -5,7 +5,11 @@ const showData = function (data) {
     let json = data.json();
     console.log('data:',json)
 
-    //get 
+    //get elements out of json
+    for (const drink of json) {
+        console.log(drink.strDrink)
+    }
+
 }
 
 const getUrlData = function () {
@@ -20,10 +24,12 @@ const getUrlData = function () {
         //send to show funciton
         showData(response);
 
+        //return response.json();
+        return response.json();
     })
-    .catch(function() {
+    .catch(function(err) {
         // This is where you run code if the server returns any errors
-
+        console.log(err)
     });
 }
 
