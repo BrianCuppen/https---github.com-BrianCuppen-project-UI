@@ -1,15 +1,20 @@
 
 
-const showData = function (data) {
-    //jsonify
-    let json = data.json();
-    console.log('data:',json)
+const showData = function (drinks) {
+  
+    console.log(typeof drinks);
 
-    //get elements out of json
-    for (const drink of json) {
-        console.log(drink.strDrink)
+    //iterate through drinks
+    for (let i = 0; i < drinks.drinks.length; i++) {
+        console.log(drinks.drinks[i].strDrink);
     }
 
+    //iterate through drinks and put in array
+    let drinkArray = [];
+    for (let i = 0; i < drinks.drinks.length; i++) {
+        drinkArray.push(drinks.drinks[i].strDrink);
+    }
+    
 }
 
 const getUrlData = function () {
@@ -17,15 +22,12 @@ const getUrlData = function () {
     let Url = "http://thecocktaildb.com/api/json/v1/1/search.php?f=a"
     let Url2 = "http://thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
    fetch(Url2) // Call the fetch function passing the url of the API as a parameter
-    .then(function(response) {
+    .then((response) => response.json())
+    .then((drinks) => {
+        console.log(drinks);
 
-        console.log(response)
-        
         //send to show funciton
-        showData(response);
-
-        //return response.json();
-        return response.json();
+        showData(drinks);
     })
     .catch(function(err) {
         // This is where you run code if the server returns any errors
