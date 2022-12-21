@@ -1,6 +1,18 @@
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
+@font-face {
+  font-family: "IBMPlex";
+  src: url('../fonts/IBMPlexMono-Regular.otf') format('otf');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'IBMPlex';
+  src: url('../fonts/IBMPlexMono-Medium.otf') format('otf');
+  font-style: normal;
+  font-weight: 600;
+}
 
 /*------------------------------------*\
 #Variables
@@ -8,9 +20,57 @@
 
 :root {
   /* Global colors */
+  --global-text-color: Black;
+  --global-color-transparent: white;
+  --global-color-alpha-light: #A3A0FB80;
+  --global-color-alpha: #0085FF;
 
+  --global-color-beta: #3B86FF;
+
+  --global-color-neutral-xxxx-light: #FFFFFF;
+  --global-color-neutral-xxx-light: #CCE6FF;
+  --global-color-neutral-xx-light: #99CEFF;
+  --global-color-neutral-x-light: #66B5FF;
+  --global-color-neutral-light: #339DFF;
+  --global-color-neutral: #0085FF;
+  --global-color-neutral-dark: #006DD1;
+  --global-color-neutral-x-dark: #0055A3;
+  --global-color-neutral-xx-dark: #003D75;
+
+  /* Shadows */
+  --global-box-shadow: 0 0 0 1px rgba(0, 0, 0, .025), 0 2px 6px rgba(0, 0, 0, .05);
+  --global-box-shadow-lg: 0 0 0 1px rgba(0, 0, 0, .025), 0 2px 10px rgba(0, 0, 0, .1);
+
+  --global-input-shadow: 0 2px 3px rgba(0, 0, 0, .05);
+  --global-input-focus-shadow: 0 0 5px var(--global-color-alpha-light);
+
+  /* radius */
+  --global-borderRadius: calc(4rem / var(--global-root-font-size));
+
+  /* baseline */
+  --global-baseline: 8px;
+  --global-whitespace-xxs: var(--global-baseline);
+  /* = 8px */
+  --global-whitespace-xs: calc(var(--global-baseline) * 2);
+  /* = 16px */
+  --global-whitespace-sm: calc(var(--global-baseline) * 3);
+  /* = 24px */
+  --global-whitespace-md: calc(var(--global-baseline) * 4);
+  /* = 32px */
+  --global-whitespace-lg: calc(var(--global-baseline) * 5);
+  /* = 40px */
+  --global-whitespace-xl: calc(var(--global-baseline) * 6);
+  /* = 48px */
 
   /* global page settings */
+  --global-page-backgroundColor: var(--global-color-transparent);
+  --global-page-textColor: var(--global-color-dark);
+  --global-selection-backgroundColor: var(--global-color-beta);
+
+      /* fonts */
+      --global-fontFamily: "IBMPlex", sans-serif;
+      --global-fontSize: var(--global-whitespace-xs);
+
 
 
 }
@@ -26,13 +86,14 @@
 */
 
 html {
-  font-size: 16px;
+  font-size: var(--global-fontSize);
   line-height: 1.5;
-  font-family: sans-serif;
+  font-family: "IBMPLEX",sans-serif;
+  color: var(--global-text-color);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--global-html-backgroundColor);
+  background-color: var(--global-color-neutral-xxxx-light);
 }
 
 *,
@@ -41,8 +102,7 @@ html {
   box-sizing: inherit;
 }
 
-body {
-}
+body {}
 
 
 ::selection {
@@ -135,6 +195,7 @@ body {
 */
 
 @media print {
+
   *,
   *:before,
   *:after {
@@ -145,16 +206,20 @@ body {
     box-shadow: none !important;
     text-shadow: none !important;
   }
+
   a,
   a:visited {
     text-decoration: underline;
   }
+
   a[href]:after {
     content: ' (' attr(href) ')';
   }
+
   abbr[title]:after {
     content: ' (' attr(title) ')';
   }
+
   /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
@@ -163,14 +228,17 @@ body {
   a[href^='javascript:']:after {
     content: '';
   }
+
   pre {
     white-space: pre-wrap !important;
   }
+
   pre,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
+
   /*
     * Printing Tables:
     * http://css-discuss.incutio.com/wiki/Printing_Tables
@@ -178,16 +246,19 @@ body {
   thead {
     display: table-header-group;
   }
+
   tr,
   img {
     page-break-inside: avoid;
   }
+
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3;
   }
+
   h2,
   h3 {
     page-break-after: avoid;
