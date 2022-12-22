@@ -39,7 +39,15 @@ const showDrinkData = function (drink) {
 
     let cocktailApp = document.querySelector(".js-Cocktails");
     //console.log(drink);
-    //iterate through drinks
+
+    //check for null items
+    for (let i = 0; i < drink.drinks.length; i++) {
+        if (drink.drinks[i].dateModified == null) {
+            drink.drinks[i].strIngredient1 = "2015-08-18 14:42:59";
+        }
+    }
+        
+        //iterate through drinks
     for (let i = 0; i < drink.drinks.length; i++) {
          cocktailApp.innerHTML += `<div class="o-container">
          <div class="c-dashboard">
@@ -47,14 +55,18 @@ const showDrinkData = function (drink) {
                  <div class="c-card">
                      <div class="c-card__body">
                          <svg>
-                             <!-- <image  href="${drink.drinks[i].strDrinkThumb}"
-                                     width="100%" height="100%" /> -->
+                             <image  href="${drink.drinks[i].strDrinkThumb}/preview"
+                                     />
                          </svg>
+                         </div>
+                         <div class="c-card__body">
+                         <p class="c-card__body--header">Date modified :</p>
+                         <p>${drink.drinks[i].dateModified}</p>
                      </div>
                  </div>
              </div>
              <div class="c-dashboard__item u-x-span-8-bp3">
-                 <div class="c-cad">
+                 <div class="c-card">
                      <div class="c-card__body">
                          <p class="c-card__body--header">${drink.drinks[i].strDrink}</p>
                          <p>${drink.drinks[i].strCategory}</p>
@@ -82,6 +94,9 @@ const showDrinkData = function (drink) {
                      <div class="c-card__body">
                          <p class="c-card__body--header">Ingredients</p>
                          <p class="js-CocktailIngredients">${drink.drinks[i].strIngredient1},${drink.drinks[i].strIngredient2},${drink.drinks[i].strIngredient3}</p>
+                         <p class="c-card__body--header">Instructions</p>
+                         <p class="js-CocktailInstructions">${drink.drinks[i].strInstructions}</p>
+
                      </div>
                  </div>
              </div>

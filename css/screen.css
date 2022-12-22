@@ -385,6 +385,7 @@ body {}
   height: 100%;
   border-top: 4px solid var(--global-color-neutral-x-dark);
 }
+
 .c-card__header {
   display: flex;
   align-items: center;
@@ -395,12 +396,20 @@ body {}
 .c-card__body {
     padding: var(--global-whitespace-md);
 }
+
 div .c-card__body:has(>button)
 {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+div .c-card__body:has(>svg)
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .c-card__body--header{
   font-weight: var(--global-fontWeight-heavy);
 }
