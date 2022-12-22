@@ -426,6 +426,12 @@ body {}
   border-top: 4px solid var(--global-color-neutral-x-dark);
 }
 
+.c-card:hover{
+  border-top: 8px solid var(--global-color-neutral-x-dark);
+  transition: ease-in-out;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
 .c-card__header {
   display: flex;
   align-items: center;
