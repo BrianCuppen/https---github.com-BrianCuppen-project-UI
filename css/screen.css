@@ -122,6 +122,42 @@ body {}
 .disableScroll:-webkit-scrollbar {
   display: none;
 }
+
+
+/*------------------------------------*\
+#SCROLLSNAPPING
+\*------------------------------------*/
+/* setup */
+
+.container {
+  display: flex;
+  overflow: auto;
+  outline: 1px dashed lightgray;
+  flex: none;
+}
+
+.container.y {
+  width: 100%;
+  height: 100%;
+  flex-flow: column nowrap;
+}
+
+.container > div {
+  scroll-snap-align: center;  
+}
+/* scroll-snap */
+
+.y.mandatory-scroll-snapping {
+  /* scroll-snap-type: y mandatory; */
+  scroll-snap-type: y proximity;
+}
+
+
+/*------------------------------------*\
+#SCROLLSNAPPING
+\*------------------------------------*/
+
+
 /*------------------------------------*\
 #OBJECTS
 \*------------------------------------*/
@@ -259,11 +295,15 @@ body {}
       height: calc(100vh - var(--c-app__topbar-height));
       overflow-y: scroll; /* the ability to scroll */
       overflow-x: hidden;
+      scroll-snap-type: y mandatory;
   }
   .c-app__sidebar::-webkit-scrollbar {
     display: none;
   }
   .c-app__main::-webkit-scrollbar {
+    display: none;
+  }
+  .y.mandatory-scroll-snapping::-webkit-scrollbar {
     display: none;
   }
   
@@ -403,6 +443,15 @@ div .c-card__body:has(>button)
   align-items: center;
   justify-content: center;
 }
+
+button:hover{
+  color: #000;
+}
+button:active{
+  color: lightblue;
+}
+
+
 div .c-card__body:has(>svg)
 {
   display: flex;
