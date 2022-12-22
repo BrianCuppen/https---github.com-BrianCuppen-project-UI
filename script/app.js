@@ -103,21 +103,23 @@ const showDrinkData = function (drink) {
              <!-- <a class="c-link"> Add to list </p> -->
              <div class="c-dashboard__item u-x-span-4-bp3 u-transparent">
                  <div class="c-card__body">
-                     <button class="c-card__button o-button-reset">
+                     <button id="button" class="c-card__button o-button-reset js-button">
                          Add to list
                      </button>
-                 </div>
+                     </div>
              </div>
          </div>
      </div>`;
 
 }
+//listenToButton
+listenToButton();
 }
 const getListData = function (drinks) {
 
     //iterate through drinks
     for (let i = 0; i < drinks.drinks.length; i++) {
-        console.log(drinks.drinks[i].strDrink + " " + drinks.drinks[i].idDrink);
+        //console.log(drinks.drinks[i].strDrink + " " + drinks.drinks[i].idDrink);
     }
 
     //iterate through drinks and put in array
@@ -157,7 +159,7 @@ const getUrlData = function () {
     fetch(Url2) // Call the fetch function passing the url of the API as a parameter
         .then((response) => response.json())
         .then((drinks) => {
-            console.log(drinks);
+            //console.log(drinks);
 
             //send to show function
             getListData(drinks);
@@ -186,10 +188,26 @@ const getCategoryData = function () {
 
 }
 
+const listenToButton = function () {
+    console.log('listen to buttons');
+    //get all buttons
+    const buttons = document.querySelectorAll('.js-button');
+    //console.log(buttons);
+    //check what button is clicked
+    for (const button of buttons) {
+        button.addEventListener('click', function () {
+            console.log('clicked');
+            gsap.fromTo('#button', { x: -50 }, { duration: 3, x: 50 })
+
+        })
+    }
+
+}
+
 // domcontentloaded event
 document.addEventListener('DOMContentLoaded', function () {
     console.log("DOM loaded");
     //test url
-    getUrlData();
+    getUrlData();S
     getCategoryData();
 });
