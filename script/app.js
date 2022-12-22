@@ -43,7 +43,7 @@ const showDrinkData = function (drink) {
     //check for null items
     for (let i = 0; i < drink.drinks.length; i++) {
         if (drink.drinks[i].dateModified == null) {
-            drink.drinks[i].strIngredient1 = "2015-08-18 14:42:59";
+            drink.drinks[i].dateModified = "2015-08-18 14:42:59";
         }
     }
         
