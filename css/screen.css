@@ -136,8 +136,14 @@ body {}
   margin-right: auto;
   max-width: 78em;  /* 1248px */
   width: 100%;
+  padding-bottom: var(--global-whitespace-xl);
 }
-
+.o-container__header {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 78em;  /* 1248px */
+  width: 100%;
+}
 /*
     Objects: List
     ---
